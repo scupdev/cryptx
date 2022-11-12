@@ -3,3 +3,4 @@ node_modules/
 hello.json
 todo
 __pycache__
+.env
