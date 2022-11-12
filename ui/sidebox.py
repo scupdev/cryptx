@@ -9,7 +9,7 @@ class SideBox:
         self.color = (45, 45, 48)
         self.rect = (x,y,w,h)
         self.font = pygame.font.SysFont('Nunito', 25)
-        self.text = self.font.render("Crypto Currencies", False, (0, 122, 204))
+        self.text = self.font.render("Crypto Currencies", True, (0, 122, 204))
 
     def draw(self,win):
         pygame.draw.rect(win,self.color,self.rect,0,0,0,20,0,20)
