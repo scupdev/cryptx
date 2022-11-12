@@ -2,6 +2,7 @@ import pygame
 
 class Button:
     def __init__(self, text, w, h, pos):
+        self.text = text
         self.top_rect = pygame.Rect(pos,(w,h)) 
         self.top_color = (62, 62, 66)
         self.font = pygame.font.SysFont('Nunito', 20)
