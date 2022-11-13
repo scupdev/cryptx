@@ -26,6 +26,14 @@ class UserInterface:
             Button('Dogecoin', 300, 100, (0,475))
         ]
 
+        #content
+        self.images = [
+            pygame.transform.scale(pygame.image.load('/home/chanlan/dev/py/cryptx/res/bitcoin.png'), (200, 200)),
+            pygame.transform.scale(pygame.image.load('/home/chanlan/dev/py/cryptx/res/ethereum.png'), (200, 200)),
+            pygame.transform.scale(pygame.image.load('/home/chanlan/dev/py/cryptx/res/solana.png'), (200, 200)),
+            pygame.transform.scale(pygame.image.load('/home/chanlan/dev/py/cryptx/res/dogecoin.png'), (200, 200)),
+        ]
+
     def check_click(self):
         for button in self.buttons:
             mouse_pos = pygame.mouse.get_pos()
@@ -49,7 +57,6 @@ class UserInterface:
     def run(self):
         while self.running:
             self.check_click()
-            print(self.current_page)
             for e in pygame.event.get():
                 if e.type == QUIT:
                     self.running = False
@@ -62,13 +69,13 @@ class UserInterface:
                 button.draw(self.screen)
 
             if self.current_page == self.pages[0]:
-                pass
+                self.screen.blit(self.images[0], (550, 20))
             elif self.current_page == self.pages[1]:
-                pass
+                self.screen.blit(self.images[1], (550, 20))
             elif self.current_page == self.pages[2]:
-                pass
+                self.screen.blit(self.images[2], (550, 20))
             elif self.current_page == self.pages[3]:
-                pass
+                self.screen.blit(self.images[3], (550, 20))
             else:
                 pass
 
