@@ -2,6 +2,7 @@ import pygame, sys
 from pygame.locals import *
 from .sidebox import SideBox
 from .button import Button
+import requests
 
 class UserInterface:
     def __init__(self, w: int, h: int):
@@ -54,6 +55,13 @@ class UserInterface:
     def set_page(self, index):
         self.current_page = self.pages[index]
 
+    def bitcoin(self):
+        self.screen.blit(self.images[0], (550, 20))
+        url = requests.get('http://127.0.0.1:8000/')
+        json_data = url.json()
+        print(json_data)
+
+
     def run(self):
         while self.running:
             self.check_click()
@@ -69,13 +77,17 @@ class UserInterface:
                 button.draw(self.screen)
 
             if self.current_page == self.pages[0]:
-                self.screen.blit(self.images[0], (550, 20))
+                self.bitcoin()
+
             elif self.current_page == self.pages[1]:
                 self.screen.blit(self.images[1], (550, 20))
+
             elif self.current_page == self.pages[2]:
                 self.screen.blit(self.images[2], (550, 20))
+
             elif self.current_page == self.pages[3]:
                 self.screen.blit(self.images[3], (550, 20))
+
             else:
                 pass
 
