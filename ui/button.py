@@ -1,10 +1,10 @@
 import pygame
 
 class Button:
-    def __init__(self, text, w, h, pos):
+    def __init__(self, text, w, h, pos, top_color=(62, 62, 66)):
         self.text = text
         self.top_rect = pygame.Rect(pos,(w,h)) 
-        self.top_color = (62, 62, 66)
+        self.top_color = top_color
         self.font = pygame.font.SysFont('Nunito', 20)
         self.text_surf = self.font.render(text,True,(255,255,255))
         self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)

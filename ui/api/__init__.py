@@ -8,7 +8,6 @@ from .xpath import xpath
 
 class Request:
     def __init__(self):
-        self.xpath = xpath
         self.options = Options()
         self.options.add_experimental_option("detach", True)
         self.options.add_argument('--headless')
@@ -17,6 +16,7 @@ class Request:
 
     def send_request(self, coin: str):
         self.browser.get(coin)
-        results = self.browser.find_elements('xpath', self.xpath)
-        for result in results:
-            return result.get_attribute('innerHTML')
+        while True:
+            results = self.browser.find_elements('xpath', xpath)
+            for result in results:
+                return result.get_attribute('innerHTML')

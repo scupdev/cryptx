@@ -1,8 +1,9 @@
 import pygame, sys
-from pygame.locals import *
+from pygame.locals import QUIT
 from .sidebox import SideBox
 from .button import Button
-import requests
+from .api.urls import bitcoin, ethereum, solana, dogecoin
+from .api import Request
 
 class UserInterface:
     def __init__(self, w: int, h: int):
@@ -35,11 +36,14 @@ class UserInterface:
             pygame.transform.scale(pygame.image.load('/home/chanlan/dev/py/cryptx/res/dogecoin.png'), (200, 200)),
         ]
 
+        # custom request library
+        self.request = Request()
+
     def check_click(self):
         for button in self.buttons:
             mouse_pos = pygame.mouse.get_pos()
             if button.top_rect.collidepoint(mouse_pos):
-                button.top_color = (0,122,204)
+                button.top_color = (0, 122, 204)
                 if pygame.mouse.get_pressed()[0]:
                     if button.text == 'Bitcoin':
                         self.set_page(0)
@@ -57,10 +61,8 @@ class UserInterface:
 
     def bitcoin(self):
         self.screen.blit(self.images[0], (550, 20))
-        url = requests.get('http://127.0.0.1:8000/')
-        json_data = url.json()
-        print(json_data)
-
+        price = self.request.send_request(bitcoin)
+        print(price)
 
     def run(self):
         while self.running:
