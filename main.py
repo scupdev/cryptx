@@ -1,5 +1,5 @@
-from api import create_app
+from ui import UserInterface
 
 if __name__ == "__main__":
-    app = create_app()
+    app = UserInterface(1024, 600)
     app.run()
